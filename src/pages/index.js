@@ -1,13 +1,3 @@
-import React from "react"
-import Card from '../components/flipcard'
+import React from 'react'
 
-export default () => <div>
-  <Card>
-    <Card.Front style={{background:'red'}}>
-      Front
-    </Card.Front>
-    <Card.Back  style={{background:'blue'}}>
-      Back
-    </Card.Back>
-  </Card>
-  </div>
+export default () => <div>Hello World</div>
