@@ -1,0 +1,22 @@
+.wrapper {
+  perspective: 40rem;
+}
+
+.card {
+    display: flex;
+    transform-style: preserve-3d;
+    transition-duration: 0.5s;
+}
+
+.card:hover, .card:focus {
+  transform: rotateX(-180deg);
+}
+
+.front, .back {
+  backface-visibility: hidden;
+  min-width: 100%;
+}
+
+.back {
+  transform: rotateX(-180deg) translate(-100%, 0);
+}
