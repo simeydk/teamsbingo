@@ -1,5 +1,15 @@
+:root {
+  --flip-transform: rotateX(-180deg)
+}
+
+.horizontal {
+  --flip-transform: rotateY(-180deg)
+}
+
 .wrapper {
   perspective: 40rem;
+  display: grid;
+  place-items: stretch;
 }
 
 .card {
@@ -8,8 +18,10 @@
     transition-duration: 0.5s;
 }
 
-.card:hover, .card:focus {
-  transform: rotateX(-180deg);
+.wrapper.hover > *:hover, 
+.wrapper.hover > *:focus, 
+.flipped {
+  transform: var(--flip-transform);
 }
 
 .front, .back {
@@ -18,5 +30,5 @@
 }
 
 .back {
-  transform: rotateX(-180deg) translate(-100%, 0);
+  transform: translate(-100%, 0) var(--flip-transform);
 }

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styles from "./flipcard.module.css"
 
-const FlipCard = ({ children, className = "", ...props }) => {
+const FlipCard = ({ children, className = "", hover = false, horizontal = false, ...props }) => {
     const [flipped, setFlipped] = useState(false)
     const toggleFlipped = () => setFlipped(!flipped)
 
-    return <div className={`${styles.wrapper} ${className}`}>
-        <div className={`${styles.card} ${flipped ? styles.flipped : ''}`} onClick={toggleFlipped} {...props}>
+    return <div className={`${styles.wrapper} ${hover ? styles.hover : ''} ${horizontal ? styles.horizontal : ''} ${className}`}>
+        <div className={`${styles.card} ${hover ? '' : flipped ? styles.flipped : ''}`} onClick={toggleFlipped} {...props}>
             {children}
         </div>
     </div>
