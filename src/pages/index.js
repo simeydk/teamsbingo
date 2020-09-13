@@ -1,5 +1,6 @@
 import React, {useState } from 'react'
 import BingoCard from '../components/bingocard'
 
+import styles from './/index.module.css'
 
-export default () => <div><BingoCard/></div>
+export default () => <div className={styles.page}><BingoCard/></div>

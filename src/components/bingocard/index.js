@@ -25,6 +25,7 @@ export default () => {
 
     return <div className={styles.card}>
         <h1 className={styles.header}> Teams Bingo!</h1>
+        <div className={styles.table_wrapper}></div>
         <table className={styles.table}>
             {rows}
         </table>
