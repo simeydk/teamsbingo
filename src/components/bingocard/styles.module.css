@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap;text=X');
 
 * {
   font-family: "Segoe UI";
@@ -33,16 +34,11 @@
   transform: skewY(-3deg);
 }
 
-.cell {
-  position: relative;
-  cursor: pointer;
 
-  font-family: 'Roboto';
-
-}
 
 .checked::after {
-  content: "×";
+  /* content: "×"; */
+  content: "X";
 
   position: absolute;
   top: 0;
@@ -58,6 +54,7 @@
   opacity: 0.8;
 
   font-size: 5rem;
+  font-family: 'Permanent Marker';
   line-height: 1;
 
   animation: fadeIn 0.3s;
@@ -77,22 +74,49 @@
 .table {
   table-layout: fixed;
   width: 100%;
-  border-spacing: 2px;
+  border-spacing: 3px;
   /* margin: 5px; */
   /* padding-bottom: 20px; */
 }
 
 .cell {
+
+  position: relative;
+  cursor: pointer;
+
+  font-family: 'Roboto';
+
+
   background: white;
-  border-radius: 2px;
+  border-radius: 4px;
   height: 80px;
 
   vertical-align: middle;
   text-align: center;
 
   padding: 0.5rem;
-  /* 
-    display: flex;
-    justify-content: center;
-    align-items: center; */
+
+  transition: 0.2s ease-in-out; 
+}
+
+.cell:hover:not(.image_cell), .cell:focus:not(.image_cell) {
+  background: lightgreen;
+}
+
+.image_cell {
+  background: lightgreen;
+  /* background: linear-gradient(70deg, green, darkgreen); */
+}
+
+.image {
+  width: 50px;
+  height: 50px;
+  filter: grayscale(0.7);
+  transform: scale(1) rotate(-8deg);
+  transition: ease-in 0.2s;
+}
+
+*:hover > .image {
+  transform: scale(2.5) rotate(10deg);
+  filter: grayscale(0);
 }

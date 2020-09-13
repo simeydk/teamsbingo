@@ -21,6 +21,8 @@ export default () => {
 
     const cells = ZeroTo24.map((x, i) => <td className={styles.cell+ " " + (checked[i] ? styles.checked : "")} onClick ={() => toggle(i)}>{quotes[i]}</td>)
 
+    cells[12] = <TeamsLogo />
+
     const rows = chunkArray(cells,5).map((cells, i) =><tr id={`row-${i}`}>{cells}</tr>)
 
     return <div className={styles.card}>
@@ -30,6 +32,12 @@ export default () => {
             {rows}
         </table>
     </div>
+}
+
+function TeamsLogo() {
+    const [bill, setBill] = useState(false)
+    const src = bill ? "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Bill_Gates_July_2014.jpg/159px-Bill_Gates_July_2014.jpg" : "https://upload.wikimedia.org/wikipedia/commons/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg"
+    return <td className={styles.cell + ' ' + styles.image_cell}><img className={styles.image} src={src} onDoubleClick={() => setBill(x => !x)}/></td>
 }
 
 function getLines() {

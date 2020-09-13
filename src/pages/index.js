@@ -1,4 +1,4 @@
-import React, {useState } from 'react'
+import React from 'react'
 import BingoCard from '../components/bingocard'
 
 import styles from './/index.module.css'
