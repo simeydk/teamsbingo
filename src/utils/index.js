@@ -16,5 +16,5 @@ export function pickFromArray(array, indices) {
 }
 
 export function allTrue(array) {
-    return array.filter(x => x === true).length === array.length
+    return (array.filter(x => x === true).length) === (array.length)
 }

@@ -19,12 +19,17 @@ export default function BingoCard() {
         return checked
     })}
 
+    useEffect(() => toggle(12),[])
+
     const winningLines = getWinningLines(checked)
     const isWinning = winningLines.length > 0
-    const winningIndices = new Set(winningLines.map(line => line.indices))
+    const winningIndices = new Set((winningLines.map(line => line.indices).flat()))
     const cellIsWinning = ZeroTo24.map(i => winningIndices.has(i))
-    
-    const cells = ZeroTo24.map((x, i) => <td className={styles.cell+ " " + (checked[i] ? styles.checked : "") + (cellIsWinning[i] ? styles.winning : "") } onClick ={() => toggle(i)}>{quotes[i]}</td>)
+
+    console.log({
+        winningLines, isWinning, winningIndices, cellIsWinning
+    })
+    const cells = ZeroTo24.map((x, i) => <td className={styles.cell+ " " + (checked[i] ? styles.checked : "") + " " + (cellIsWinning[i] ? styles.winning : "") } onClick ={() => toggle(i)}>{quotes[i]}</td>)
 
     cells[12] = <TeamsLogo />
 
