@@ -60,6 +60,16 @@
   animation: fadeIn 0.3s;
 }
 
+.cell.winning {
+  background: rgba(228,51,12,1);
+  background: linear-gradient(128deg, rgba(247,202,18,1) 0%, rgba(247,129,18,1) 37%, rgba(228,51,12,1) 100%);
+  color:white;
+}
+
+.cell.winning::after {
+  color: rgba(26,15,217,1);
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;

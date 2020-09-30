@@ -1,5 +1,5 @@
 import React, {useState } from 'react'
-import { intArray, chunkArray, shuffle } from '../../utils'
+import { intArray, chunkArray, shuffle, pickFromArray, allTrue } from '../../utils'
 
 import styles from './styles.module.css'
 import { useEffect } from 'react'
@@ -10,7 +10,7 @@ chunkArray(intArray(20,1),6)
 
 const quotes = shuffle(getLines())
 
-export default () => {
+export default function BingoCard() {
     
     const [checked, setChecked] = useState(Array(25).fill(false))
     const toggle = i => {setChecked(oldChecked => {
@@ -19,7 +19,12 @@ export default () => {
         return checked
     })}
 
-    const cells = ZeroTo24.map((x, i) => <td className={styles.cell+ " " + (checked[i] ? styles.checked : "")} onClick ={() => toggle(i)}>{quotes[i]}</td>)
+    const winningLines = getWinningLines(checked)
+    const isWinning = winningLines.length > 0
+    const winningIndices = new Set(winningLines.map(line => line.indices))
+    const cellIsWinning = ZeroTo24.map(i => winningIndices.has(i))
+    
+    const cells = ZeroTo24.map((x, i) => <td className={styles.cell+ " " + (checked[i] ? styles.checked : "") + (cellIsWinning[i] ? styles.winning : "") } onClick ={() => toggle(i)}>{quotes[i]}</td>)
 
     cells[12] = <TeamsLogo />
 
@@ -76,3 +81,32 @@ function getLines() {
       "Loadshedding just kicked in"
     ];
   }
+
+  function winningIndices() {
+    return [
+        [0, 1, 2, 3, 4],
+        [5, 6, 7, 8, 9],
+        [10, 11, 12, 13, 14],
+        [15, 16, 17, 18, 19],
+        [20, 21, 22, 23, 24],
+        
+        [0, 5, 10, 15, 20],
+        [1, 6, 11, 16, 21],
+        [2, 7, 12, 17, 22],
+        [3, 8, 13, 18, 23],
+        [4, 9, 14, 19, 24],
+        
+        [0, 6, 12, 18, 24],
+        [20, 16, 12, 8, 4],        
+    ]
+}
+
+function getWinningLines(isChecked) {
+    return winningIndices().map(line => {
+        const values = pickFromArray(isChecked, line)
+        const isWinner = allTrue(values)
+        return {
+            indices: line, values, isWinner
+        }
+    }).filter(line => line.isWinner)
+}

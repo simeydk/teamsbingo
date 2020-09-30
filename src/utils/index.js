@@ -9,3 +9,12 @@ export const chunkArray = (arr, chunkSize) => {
 export function shuffle(arr) {
     return arr.sort(() => Math.random() - 0.5);
 }
+
+
+export function pickFromArray(array, indices) {
+    return indices.map(i => array[i])
+}
+
+export function allTrue(array) {
+    return array.filter(x => x === true).length === array.length
+}
