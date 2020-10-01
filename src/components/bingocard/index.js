@@ -17,6 +17,8 @@ const getInitialChecked = () => {
 
 const getShuffledLines = () => shuffle(getLines()).slice(0, 25)
 
+document.addEventListener('storage',()=> alert('storage!'),false)
+
 export default function BingoCard() {
     const [quotes, setQuotes] = useLocalStorage('quotes', getShuffledLines())
     const [checked, setChecked] = useLocalStorage('checked', getInitialChecked())
@@ -39,12 +41,12 @@ export default function BingoCard() {
     const winningIndices = new Set((winningLines.map(line => line.indices).flat()))
     const cellIsWinning = ZeroTo24.map(i => winningIndices.has(i))
 
-    console.log({
-        winningLines, isWinning, winningIndices, cellIsWinning
-    })
-    const cells = ZeroTo24.map((x, i) => <td className={styles.cell + " " + (checked[i] ? styles.checked : "") + " " + (cellIsWinning[i] ? styles.winning : "")} onClick={() => toggle(i)}>{quotes[i]}</td>)
+    // console.log({
+    //     winningLines, isWinning, winningIndices, cellIsWinning
+    // })
+    const cells = ZeroTo24.map((x, i) => <td key={i} className={styles.cell + " " + (checked[i] ? styles.checked : "") + " " + (cellIsWinning[i] ? styles.winning : "")} onClick={() => toggle(i)}>{quotes[i]}</td>)
 
-    cells[12] = <TeamsLogo />
+    cells[12] = <TeamsLogo key={12} />
 
     const rows = chunkArray(cells, 5).map((cells, i) => <tr id={`row-${i}`}>{cells}</tr>)
 
