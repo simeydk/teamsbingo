@@ -17,8 +17,6 @@ const getInitialChecked = () => {
 
 const getShuffledLines = () => shuffle(getLines()).slice(0, 25)
 
-document.addEventListener('storage',()=> alert('storage!'),false)
-
 export default function BingoCard() {
     const [quotes, setQuotes] = useLocalStorage('quotes', getShuffledLines())
     const [checked, setChecked] = useLocalStorage('checked', getInitialChecked())
