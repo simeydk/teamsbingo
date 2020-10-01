@@ -9,13 +9,13 @@ const ZeroTo24 = intArray(25)
 chunkArray(intArray(20, 1), 6)
 
 
-const getInitialChecked = () => { 
-    const checked = Array(25).fill(false) 
+const getInitialChecked = () => {
+    const checked = Array(25).fill(false)
     checked[12] = true
     return checked
 }
 
-const getShuffledLines = () => shuffle(getLines()).slice(0,25)
+const getShuffledLines = () => shuffle(getLines()).slice(0, 25)
 
 export default function BingoCard() {
     const [quotes, setQuotes] = useLocalStorage('quotes', getShuffledLines())
@@ -48,12 +48,15 @@ export default function BingoCard() {
 
     const rows = chunkArray(cells, 5).map((cells, i) => <tr id={`row-${i}`}>{cells}</tr>)
 
-    return <div className={styles.card}>
-        <h1 className={styles.header} onDoubleClick={reset}> Teams Bingo!</h1>
-        <div className={styles.table_wrapper}></div>
-        <table className={styles.table}>
-            {rows}
-        </table>
+    return <div className={styles.wrapper}>
+        <div className={styles.card}>
+            <h1 className={styles.header}> Teams Bingo!</h1>
+            <div className={styles.table_wrapper}></div>
+            <table className={styles.table}>
+                {rows}
+            </table>
+        </div>
+        <button className={styles.reset_button} onClick={reset}>Reset</button>
     </div>
 }
 

@@ -130,3 +130,23 @@
   transform: scale(2.5) rotate(10deg);
   filter: grayscale(0);
 }
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.reset_button {
+  color: gray;
+  text-decoration: underline;
+  border: none;
+  text-align: center;
+  margin: 1em auto;
+  padding: 0.5em;
+  background: none;
+  cursor: pointer;
+}
+
+.reset_button:hover {
+  color: tomato;
+}
