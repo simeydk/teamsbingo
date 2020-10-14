@@ -1,0 +1,36 @@
+.page {
+    background: gray;
+    margin: 0;
+    padding: 2rem 0.5rem;
+    min-height: 100vh;
+}
+
+.main {
+    padding: 2rem 1rem;
+    margin: 0 auto;
+    max-width: 600px;
+    background: pink;
+}
+
+.card {
+    background: white;
+    /* border: 1px solid gray; */
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.counter {
+    display: flex;
+    font-size: 1.25rem
+}
+
+.button {
+    width: 2rem;
+}
+
+.count {
+    min-width: 2rem;
+    text-align: center;
+}

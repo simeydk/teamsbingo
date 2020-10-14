@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { intArray, chunkArray, shuffle, pickFromArray, allTrue } from '../../utils'
-import { useLocalStorage } from '../../utils/hooks'
+import useLocalStorage from '../../utils/hooks/useLocalStorage'
 import styles from './styles.module.css'
 import { useEffect } from 'react'
 

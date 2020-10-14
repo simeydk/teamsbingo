@@ -14,18 +14,24 @@ const getLS = (key, fallback) => {
 }
 
 // Hook
-export function useLocalStorage(key, initialValue) {
+export default function useLocalStorage(key, initialValue) {
+  // const eventKey = 'useLocalStorage-hook-' + String(key)
   const get = () => getLS(key, initialValue)
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
   const [storedValue, setStoredValue] = useState(get());
-
-  let bc
+  const updateStateFromLS = () => setStoredValue(get())
+  
+  let broadcastChannel
   useEffect(() => {
-    bc = new BroadcastChannel('useLocalStorageHook Broadcast Channel for ' + key)
-    bc.onmessage = () => setStoredValue(get())
+    broadcastChannel = new BroadcastChannel('useLocalStorageHook Broadcast Channel for ' + key)
+    broadcastChannel.onmessage = updateStateFromLS
+    // window.addEventListener(eventKey, updateStateFromLS)
 
-    return () => bc.close()
+    return () => {
+      broadcastChannel.close()
+      // window.removeEventListener(eventKey, updateStateFromLS)
+    }
   })
 
     // Return a wrapped version of useState's setter function that ...
@@ -39,7 +45,7 @@ export function useLocalStorage(key, initialValue) {
       setStoredValue(valueToStore);
       // Save to local storage
       window.localStorage.setItem(key, JSON.stringify(valueToStore));
-      bc.postMessage('value updated')
+      broadcastChannel.postMessage('value updated')
     } catch (error) {
       // A more advanced implementation would handle the error case
       console.log(error);
