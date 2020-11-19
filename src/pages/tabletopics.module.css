@@ -32,18 +32,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 0.3s ease-in-out;
+    transition: 0.1s ease-in-out;
 }
 
 .front:hover
  {
-    border-color: firebrick;
+    /* border-color: firebrick; */
+    color: black;
 }
 
 
 .front {
     background: linear-gradient(#FECACA, #F87171);
     font-size: 4rem;
+    color: #00000090;
 }
 
 .back {
