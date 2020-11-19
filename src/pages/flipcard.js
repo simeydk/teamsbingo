@@ -1,41 +1,34 @@
 import React from "react"
 import Card from '../components/flipcard'
 
-import './flipcard.css'
+import styles from './flipcard.module.css'
+
+
+const topics = [
+  { front: 'demo', topic: 'My best holiday memory as a child' },
+  { front: 1, topic: 'The gift I always dreamed of as a child' },
+  { front: 2, topic: `The most unusual gift I've ever received` },
+  { front: 3, topic: 'Not all gifts come in wrapping paper' },
+  { front: 4, topic: 'My favourite thing about December' },
+  { front: 5, topic: 'If you could give any one any gift, what would it be?' },
+  { front: 6, topic: 'Why should we give' },
+  { front: 7, topic: 'What are you thankful for?' },
+]
 
 export default () => <div>
-  <div className='grid'>
+  <div className={styles.page}>
 
-    <Card>
-      <Card.Front style={{ background: 'red' }}>
-        Front
+    <div className={styles.grid}>
+      {topics.map(({ front, topic }) =>
+        <Card className={styles.card} >
+          <Card.Front className={styles.front + ' ' + styles.side} >
+            {front}
     </Card.Front>
-      <Card.Back style={{ background: 'blue' }}>
-        Back
+          <Card.Back className={styles.back + ' ' + styles.side}>
+            {topic}
     </Card.Back>
-    </Card>
-
-    <Card hover >
-      <Card.Front style={{ background: 'red' }}>
-        Front <br/>
-        Front <br/>
-        Front <br/>
-        Front <br/>
-        Front <br/>
-        Front <br/>
-    </Card.Front>
-      <Card.Back style={{ background: 'blue' }}>
-        Back
-    </Card.Back>
-    </Card>
-
-    <Card horizontal>
-      <Card.Front style={{ background: 'red' }}>
-        Front
-    </Card.Front>
-      <Card.Back style={{ background: 'blue' }}>
-        Back
-    </Card.Back>
-    </Card>
+        </Card>
+      )}
+    </div>
   </div>
 </div>
