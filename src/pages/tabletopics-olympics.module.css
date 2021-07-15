@@ -4,7 +4,7 @@
 }
 
 .page {
-    background: #D1D5DB;
+    background: gray;
     min-height: 100vh;
     overflow-y:scroll;
     overflow-x:hidden;
@@ -41,18 +41,49 @@
 .front:hover
  {
     /* border-color: firebrick; */
-    color: black;
+    color: white;
 }
 
 
 .front {
-    background: linear-gradient(130deg, #FECACA, #F87171);
+    background: linear-gradient(130deg, lightgray, gray);
     font-size: 4rem;
     color: #00000090;
 }
 
 .back {
-    background: linear-gradient(130deg, #A7F3D0, #10B981);
+    background: linear-gradient(130deg, whitesmoke, lightgray);
+    border-color: white;
     font-size: 2rem;
     text-align: center;
+}
+
+.blue {
+    background: linear-gradient(130deg, slateblue, navy);
+    color:whitesmoke;
+}
+
+.black {
+    background: linear-gradient(130deg, #555, black);
+    color:whitesmoke;
+}
+
+.red {
+    background: linear-gradient(130deg, tomato, firebrick);
+    color:whitesmoke;
+}
+
+.yellow {
+    background: linear-gradient(130deg, yellow, goldenrod);
+    color:whitesmoke;
+}
+
+.green {
+    background: linear-gradient(130deg, lightgreen, darkgreen);
+    color:whitesmoke;
+}
+
+.demo {
+    background: linear-gradient(130deg, darkorchid, darkmagenta);
+    color:white;
 }
