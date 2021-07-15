@@ -18,12 +18,12 @@ import styles from './tabletopics-olympics.module.css'
 
 const topics = [
   {front: 1, topic: "Should the olympic logo be updated?", className: styles.blue},
-  {front: 2, topic: "Which sport or event would you like to see added or removed from the olympics? ", className: styles.black},
-  {front: 3, topic: "What is your favourite sport to watch, if any? ", className: styles.red},
-  {front: 4, topic: "Professional Sport in COVID: Vital spirit booster or not worth the risk? ", className: styles.yellow},
-  {front: 5, topic: 'If you could be "going to the Olympics good" in any event or sport, what would you choose?', className: styles.green},
-  {front: 6, topic: "If you could safely travel to Japan or any other country right now, where would you go? "},
-  {front: 7, topic: "What is the best thing ever to come out if Japan?"},
+  {front: 2, topic: "What is the best thing ever to come out if Japan?", className: styles.black},
+  {front: 3, topic: 'If you could be "going to the Olympics good" in any event or sport, what would you choose?', className: styles.red},
+  {front: 4, topic: "Professional Sport during COVID: Vital spirit booster or not worth the risk? ", className: styles.yellow},
+  {front: 5, topic: "What is your favourite sport to watch, if any?", className: styles.green},
+  {front: 6, topic: "If you could safely travel to Japan or any other country right now, where would you go?"},
+  // {front: 7, topic: "Which sport or event would you like to see added or removed from the olympics? "},
   {front: 'demo', topic: "Should Cape Town put in another bid to host the Olympics?", className: styles.demo},
 ]
 export default () => <div>
