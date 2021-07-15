@@ -23,6 +23,11 @@
     
 }
 
+.card:hover {
+    transition-duration: 100ms;
+    transform: scale(1.02);
+}
+
 .front,
 .back {
     box-sizing: border-box;
